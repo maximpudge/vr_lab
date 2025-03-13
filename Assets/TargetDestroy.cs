@@ -2,21 +2,26 @@ using UnityEngine;
 
 public class TargetDestroy : MonoBehaviour
 {
-    public GameObject particlesDestroy; // Reference to the particle effect prefab
+    public GameObject particlesDestroy; // Эффект разрушения
+    public TargetCounter targetCounter; // Ссылка на TargetCounter
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Obj"))
         {
-            Destroy(other.gameObject); // Destroy the object that collided
+            Destroy(other.gameObject); // Уничтожаем объект, который столкнулся
 
-            // Call NewTarget method from the SpawnTarget script
+            // Вызываем метод NewTarget из скрипта SpawnTarget
             transform.parent.GetComponent<SpawnTarget>().NewTarget();
 
-            // Instantiate the particle effect at the current position and rotation
-            Instantiate(particlesDestroy, transform.position, transform.rotation); // Corrected from Instantiaate and ratation
+            // Создаём эффект разрушения
+            Instantiate(particlesDestroy, transform.position, transform.rotation);
 
-            Destroy(gameObject); // Destroy this target
+            // Уничтожаем текущую мишень
+            Destroy(gameObject);
+
+            // Увеличиваем счётчик
+            targetCounter.IncrementTargetCount();
         }
     }
 }

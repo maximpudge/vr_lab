@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\SpawnTarget.cs" />
     <Compile Include="Assets\TargetDestroy.cs" />
+    <Compile Include="Assets\TargetCounter.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\ParticlesDestroy.cs" />
     <Compile Include="Assets\SpawnObj.cs" />
